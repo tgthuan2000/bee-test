@@ -12,7 +12,7 @@ const schema = z.object({
     password: z.string().min(1, { message: 'This field is required!' }),
 })
 
-function SignInForm() {
+function SignIn() {
     const { signIn, loading } = useAuth()
 
     const form = useForm({
@@ -56,4 +56,4 @@ function SignInForm() {
     )
 }
 
-export default SignInForm
+export default SignIn

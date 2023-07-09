@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { cn } from '../../../lib/utils'
 import { typoVars } from '../../ui/typography'
+import NavLinkDropdown from '../nav-link-dropdown'
 import ProfileDropdown from '../profile-dropdown'
 
 function HorizontalNavbar({ children }) {
@@ -11,7 +12,10 @@ function HorizontalNavbar({ children }) {
                     <Link to='/' className={cn(typoVars({ variant: 'page' }), 'hover:opacity-50')}>
                         Dashboard
                     </Link>
-                    <ProfileDropdown />
+                    <div className='flex items-center space-x-2'>
+                        <NavLinkDropdown />
+                        <ProfileDropdown />
+                    </div>
                 </nav>
             </header>
             <div className='mt-16'>{children}</div>

@@ -14,3 +14,5 @@ export const NAV_LINKS = [
         icon: Image,
     },
 ]
+
+export const PAGE_LOAD_MS = 500

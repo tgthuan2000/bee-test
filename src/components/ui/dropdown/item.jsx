@@ -10,7 +10,7 @@ const DropdownItem = forwardRef((props, ref) => {
 
     const handleSelect = async () => {
         setLoading(true)
-        await onSelect()
+        await onSelect?.()
         setLoading(false)
         close()
     }
