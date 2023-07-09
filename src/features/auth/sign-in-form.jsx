@@ -8,8 +8,8 @@ import Button from '../../components/ui/button'
 import Typography from '../../components/ui/typography'
 
 const schema = z.object({
-    username: z.string(),
-    password: z.string(),
+    username: z.string().min(1, { message: 'This field is required!' }),
+    password: z.string().min(1, { message: 'This field is required!' }),
 })
 
 function SignInForm() {
@@ -37,14 +37,14 @@ function SignInForm() {
                     <FormField
                         control={form.control}
                         name='username'
-                        render={({ field }) => <InputField label='Username' placeholder='account123' {...field} />}
+                        render={({ field }) => <InputField label='Username' placeholder='account-123' {...field} />}
                     />
 
                     <FormField
                         control={form.control}
                         name='password'
                         render={({ field }) => (
-                            <InputField type='password' label='Password' placeholder='**********' {...field} />
+                            <InputField type='password' label='Password' placeholder='...' {...field} />
                         )}
                     />
                     <Button size='lg' className='w-full' type='submit' loading={loading} disabled={loading}>
