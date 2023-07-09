@@ -4,6 +4,8 @@ import { z } from 'zod'
 import { useAuth } from '../../contexts/auth'
 import FormField from '../../components/ui/form/form-field'
 import InputField from '../../components/template/input-field'
+import Button from '../../components/ui/button'
+import Typography from '../../components/ui/typography'
 
 const schema = z.object({
     username: z.string(),
@@ -11,7 +13,7 @@ const schema = z.object({
 })
 
 function SignInForm() {
-    const { signIn } = useAuth()
+    const { signIn, loading } = useAuth()
 
     const form = useForm({
         resolver: zodResolver(schema),
@@ -21,30 +23,36 @@ function SignInForm() {
         },
     })
 
-    const handleSubmit = (data) => {
+    const handleSubmit = async (data) => {
         const { username } = data
 
-        signIn(username)
+        await signIn(username)
     }
 
     return (
-        <FormProvider {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)}>
-                <FormField
-                    control={form.control}
-                    name='username'
-                    render={({ field }) => <InputField label='Username' placeholder='Enter your username' {...field} />}
-                />
+        <div className='mx-auto flex h-screen w-full max-w-md items-center overflow-hidden px-3'>
+            <FormProvider {...form}>
+                <form onSubmit={form.handleSubmit(handleSubmit)} className='w-full space-y-5'>
+                    <Typography className='text-center'>Login</Typography>
+                    <FormField
+                        control={form.control}
+                        name='username'
+                        render={({ field }) => <InputField label='Username' placeholder='account123' {...field} />}
+                    />
 
-                <FormField
-                    control={form.control}
-                    name='password'
-                    render={({ field }) => (
-                        <InputField type='password' label='Password' placeholder='Enter your password' {...field} />
-                    )}
-                />
-            </form>
-        </FormProvider>
+                    <FormField
+                        control={form.control}
+                        name='password'
+                        render={({ field }) => (
+                            <InputField type='password' label='Password' placeholder='**********' {...field} />
+                        )}
+                    />
+                    <Button size='lg' className='w-full' type='submit' loading={loading} disabled={loading}>
+                        Enter Dashboard
+                    </Button>
+                </form>
+            </FormProvider>
+        </div>
     )
 }
 

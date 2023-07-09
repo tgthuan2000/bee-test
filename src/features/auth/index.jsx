@@ -3,12 +3,12 @@ import { useAuth } from '../../contexts/auth'
 import SignInForm from './sign-in-form'
 
 function Auth() {
-    const { signed } = useAuth()
+    const { auth } = useAuth()
 
     /**
      * @check Signed
      */
-    if (signed) {
+    if (auth.signed) {
         return <Navigate to='/' />
     }
 

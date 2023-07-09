@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { cn } from '~/lib/utils'
+import { cn } from '../../../lib/utils'
 import Typography from '../typography'
 
 const FormMessage = forwardRef((props, ref) => {

@@ -4,23 +4,74 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    margin: 0;
-    box-sizing: border-box;
+@layer base {
+    :root {
+        --navbar: 0 0% 100%;
+
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+
+        --primary: 0 0% 0%;
+        --primary-foreground: 0 0% 100%;
+
+        --secondary: 212 100% 48%;
+        --secondary-foreground: 0 0% 100%;
+
+        --accent: 0 0% 95%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+
+        --danger: 350 100% 60%;
+        --danger-foreground: 0 0% 100%;
+
+        --success: 142 71% 45%;
+        --success-foreground: 0 0% 100%;
+
+        --info: 217 91% 60%;
+        --info-foreground: 0 0% 100%;
+
+        --ring: 215 20.2% 65.1%;
+
+        --radius: 0.75rem;
+
+        --switch: 0 0% 100%;
+        --switch-foreground: 214.3 31.8% 91.4%;
+    }
 }
 
-html,
-button,
-input {
-    font-family: 'Lexend';
-    font-weight: 300;
-}
+@layer base {
+    * {
+        @apply border-border;
+    }
 
-a {
-    text-decoration: none;
-}
+    body {
+        @apply bg-background text-foreground;
+    }
 
-ul,
-li {
-    list-style-type: none;
+    html,
+    button,
+    input {
+        font-family: 'Lexend';
+        font-weight: 300;
+    }
+
+    a {
+        @apply no-underline;
+    }
+
+    ul,
+    li {
+        @apply list-none;
+    }
 }

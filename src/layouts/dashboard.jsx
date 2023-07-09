@@ -6,12 +6,12 @@ import Loader from '../components/ui/loader'
 import { useAuth } from '../contexts/auth'
 
 function Dashboard() {
-    const { isSigned } = useAuth()
+    const { auth } = useAuth()
 
     /**
      * @check Signed
      */
-    if (!isSigned) {
+    if (!auth.signed) {
         return <Navigate to='/auth' />
     }
 

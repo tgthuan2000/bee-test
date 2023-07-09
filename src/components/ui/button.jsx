@@ -1,9 +1,9 @@
 import { cva } from 'class-variance-authority'
 import { forwardRef } from 'react'
-import { cn } from '~/lib/utils'
-import { Loader } from '../loading'
+import { cn } from '../../lib/utils'
+import Loader from './loader'
 
-const btnVars = cva(
+export const btnVars = cva(
     'inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background',
     {
         variants: {
@@ -47,4 +47,4 @@ const Button = forwardRef((props, ref) => {
 
 Button.displayName = 'Button'
 
-export { Button, btnVars }
+export default Button
