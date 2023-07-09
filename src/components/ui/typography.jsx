@@ -12,6 +12,7 @@ export const typoVars = cva('', {
             badge: 'text-xs text-secondary-foreground bg-secondary',
             subTitle: 'text-xs font-light opacity-50',
             avatar: 'text-xl text-background font-semibold',
+            'dropdown-label': 'px-2 py-1.5 text-sm font-semibold',
         },
     },
     defaultVariants: {

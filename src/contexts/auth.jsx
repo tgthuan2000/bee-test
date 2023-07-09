@@ -2,9 +2,20 @@ import { createContext, useContext, useState } from 'react'
 import { LOCAL_STORAGE_BEE_PROFILE } from '../constants'
 import { wait } from '../lib/utils'
 
-const AuthContext = createContext({})
+const defaultValue = {
+    auth: {
+        signed: false,
+        username: undefined,
+    },
+    loading: false,
+    signIn: async () => {},
+    signOut: async () => {},
+}
+
+const AuthContext = createContext(defaultValue)
 
 const AuthProvider = ({ children }) => {
+    const [loading, setLoading] = useState(defaultValue.loading)
     const [auth, setAuth] = useState(() => {
         try {
             const { signed = false, username = undefined } = JSON.parse(
@@ -16,14 +27,9 @@ const AuthProvider = ({ children }) => {
                 username,
             }
         } catch (error) {
-            return {
-                signed: false,
-                username: undefined,
-            }
+            return defaultValue.auth
         }
     })
-
-    const [loading, setLoading] = useState(false)
 
     const signIn = async ({ username }) => {
         setLoading(true)
@@ -52,17 +58,20 @@ const AuthProvider = ({ children }) => {
     }
 
     const signOut = async () => {
+        setLoading(true)
+
+        /**
+         * @mock time to sign-out
+         */
+        await wait(2000)
+
         setAuth({
             signed: false,
             username: undefined,
         })
 
-        /**
-         * @mock time to sign-out
-         */
-        await wait(1000)
-
         localStorage.removeItem(LOCAL_STORAGE_BEE_PROFILE)
+        setLoading(false)
     }
 
     const value = {

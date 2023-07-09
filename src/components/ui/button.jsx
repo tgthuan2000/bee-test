@@ -4,7 +4,7 @@ import { cn } from '../../lib/utils'
 import Loader from './loader'
 
 export const btnVars = cva(
-    'inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background',
+    'inline-flex cursor-pointer items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background',
     {
         variants: {
             variant: {
@@ -35,13 +35,12 @@ export const btnVars = cva(
 )
 
 const Button = forwardRef((props, ref) => {
-    const { className, variant, size, children, loading, ...rest } = props
+    const { className, variant, size, children, loading, as: Comp = 'button', ...rest } = props
 
     return (
-        <button className={cn(btnVars({ variant, size, className }))} ref={ref} {...rest}>
-            {loading && <Loader className='mr-2' />}
-            {children}
-        </button>
+        <Comp className={cn(btnVars({ variant, size, className }))} ref={ref} {...rest}>
+            {loading ? <Loader className='h-5 w-5 text-center' /> : children}
+        </Comp>
     )
 })
 

@@ -3,9 +3,12 @@ import Button from './button'
 
 function Avatar({ username = '' }) {
     const firstLetter = username[0].toUpperCase() ?? '?'
+
     return (
-        <Button size='icon'>
-            <Typography variant='avatar'>{firstLetter}</Typography>
+        <Button size='icon' as='span' className='select-none'>
+            <Typography variant='avatar' as='span'>
+                {firstLetter}
+            </Typography>
         </Button>
     )
 }
