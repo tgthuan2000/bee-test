@@ -11,6 +11,7 @@ export const typoVars = cva('', {
             description: 'text-xs text-muted-foreground',
             badge: 'text-xs text-secondary-foreground bg-secondary',
             subTitle: 'text-xs font-light opacity-50',
+            avatar: 'text-xl text-background font-semibold',
         },
     },
     defaultVariants: {

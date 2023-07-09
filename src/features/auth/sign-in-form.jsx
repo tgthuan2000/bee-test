@@ -26,9 +26,9 @@ function SignInForm() {
     const handleSubmit = async (data) => {
         const { username } = data
 
-        await signIn(username)
+        await signIn({ username })
     }
-
+    console.log(form.watch(''))
     return (
         <div className='mx-auto flex h-screen w-full max-w-md items-center overflow-hidden px-3'>
             <FormProvider {...form}>
