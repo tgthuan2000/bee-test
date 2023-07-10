@@ -56,7 +56,7 @@ export default function DataTable({
                     <TableRow>
                         <TableCell colSpan={columns.length}>
                             <Button variant='link' onClick={fetchMorePage} loading={fetching} disabled={fetching}>
-                                Tải thêm
+                                Load more
                             </Button>
                         </TableCell>
                     </TableRow>
