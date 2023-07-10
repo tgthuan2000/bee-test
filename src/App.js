@@ -12,7 +12,7 @@ import { PAGE_LOAD_MS } from './constants'
  */
 const SignIn = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/sign-in')))
 const Home = lazy(() => import('./features/home'))
-const Table = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/table')))
+const TrendingMovie = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/trending-movie')))
 const Profile = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/profile')))
 const Image = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/image')))
 
@@ -23,7 +23,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Dashboard />}>
                         <Route index element={<Home />} />
-                        <Route path='table' element={<Table />} />
+                        <Route path='trending-movie' element={<TrendingMovie />} />
                         <Route path='profile' element={<Profile />} />
                         <Route path='image' element={<Image />} />
                     </Route>

@@ -3,10 +3,10 @@ import Typography from '../../components/ui/typography'
 import DataList from './data-list'
 import SearchFilter from './search-filter'
 
-function Table() {
+function TrendingMovie() {
     return (
         <Fragment>
-            <Typography variant='page'>Table</Typography>
+            <Typography variant='page'>Trending Movie</Typography>
             <div className='my-4 flex flex-col justify-between gap-4 sm:flex-row'>
                 <SearchFilter />
             </div>
@@ -17,4 +17,4 @@ function Table() {
     )
 }
 
-export default Table
+export default TrendingMovie

@@ -25,7 +25,7 @@ export const columns = [
         renderRow: (row) => {
             return (
                 <div className='inline-flex w-28 flex-col items-start gap-y-0.5'>
-                    <Typography variant='text'>{numeral(row.vote_average).format('0,0.0')} / 10</Typography>
+                    <Typography variant='title'>{numeral(row.vote_average).format('0,0.0')}</Typography>
                     <Progress size='sm' value={row.vote_average * 10} />
                 </div>
             )

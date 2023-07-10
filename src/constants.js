@@ -4,8 +4,8 @@ export const LOCAL_STORAGE_BEE_PROFILE = 'bee-profile'
 
 export const NAV_LINKS = [
     {
-        href: 'table',
-        label: 'Table',
+        href: 'trending-movie',
+        label: 'Trending Movie',
         icon: Grid,
     },
     {
