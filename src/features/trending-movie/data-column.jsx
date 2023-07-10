@@ -1,6 +1,5 @@
 import moment from 'moment'
 import numeral from 'numeral'
-import { Link } from 'react-router-dom'
 import Image from '../../components/ui/image'
 import { Progress } from '../../components/ui/progress'
 import Typography from '../../components/ui/typography'
@@ -10,13 +9,13 @@ export const columns = [
         id: 'movie',
         label: 'Movie',
         renderRow: (row) => (
-            <Link to={`${row.id}`} className='group inline-flex items-center gap-x-3'>
+            <div className='inline-flex items-center gap-x-3'>
                 <Image variant='table' src={'https://image.tmdb.org/t/p/w500' + row.poster_path} />
 
-                <Typography variant='title' title={row.title} className='line-clamp-3 group-hover:underline'>
+                <Typography variant='title' title={row.title} className='line-clamp-3'>
                     {row.title}
                 </Typography>
-            </Link>
+            </div>
         ),
     },
     {
