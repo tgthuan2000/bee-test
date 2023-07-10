@@ -20,8 +20,12 @@ export const typoVars = cva('', {
     },
 })
 
-function Typography({ children, as: Comp = 'p', className, variant }) {
-    return <Comp className={cn(typoVars({ variant }), className)}>{children}</Comp>
+function Typography({ children, as: Comp = 'p', className, variant, ...props }) {
+    return (
+        <Comp className={cn(typoVars({ variant }), className)} {...props}>
+            {children}
+        </Comp>
+    )
 }
 
 export default Typography

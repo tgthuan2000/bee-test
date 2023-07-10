@@ -23,7 +23,7 @@ function DropdownPortal({ children }) {
     }
 
     return (
-        <div className='absolute right-0 top-full'>
+        <div className='absolute right-0 top-[calc(100%+4px)]'>
             {children({
                 state: isShow ? 'open' : 'closed',
                 side: 'top',

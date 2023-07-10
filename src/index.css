@@ -74,4 +74,19 @@
     li {
         @apply list-none;
     }
+
+    .image-mask {
+        --mask-value: linear-gradient(
+            180deg,
+            hsla(0, 0%, 0%, 0),
+            hsla(0, 0%, 0%, 0.6) 10%,
+            #000 25%,
+            #000 75%,
+            hsla(0, 0%, 0%, 0.6) 90%,
+            hsla(0, 0%, 0%, 0)
+        );
+
+        mask-image: var(--mask-value);
+        -webkit-mask-image: var(--mask-value);
+    }
 }

@@ -6,11 +6,18 @@ import FormLabel from '../ui/form/form-label'
 import Input from '../ui/input'
 
 const InputField = forwardRef((props, ref) => {
-    const { type = 'text', label = 'Label', withoutMessage = false, placeholder = 'Placeholder', ...rest } = props
+    const {
+        type = 'text',
+        label = 'Label',
+        withoutMessage = false,
+        withoutLabel = false,
+        placeholder = 'Placeholder',
+        ...rest
+    } = props
 
     return (
         <FormItem>
-            <FormLabel>{label}</FormLabel>
+            {!withoutLabel && <FormLabel>{label}</FormLabel>}
             <FormControl>
                 {({ id }) => <Input type={type} id={id} placeholder={placeholder} {...rest} ref={ref} />}
             </FormControl>
