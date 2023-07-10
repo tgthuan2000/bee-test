@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash'
-import { ArrowLeft, ArrowRight, Quote } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUp, Quote } from 'lucide-react'
 import numeral from 'numeral'
 import Button from '../ui/button'
 import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '../ui/table'
@@ -21,6 +21,10 @@ export default function DataTable({
 }) {
     const isInfinity = paginate === 'infinity'
     const isPage = paginate === 'page'
+
+    const handleBackToTop = () => {
+        window.scrollTo(0, 0)
+    }
 
     return (
         <Table>
@@ -55,9 +59,14 @@ export default function DataTable({
                 {isInfinity && hasNextPage && (
                     <TableRow>
                         <TableCell colSpan={columns.length}>
-                            <Button variant='link' onClick={fetchMorePage} loading={fetching} disabled={fetching}>
-                                Load more
-                            </Button>
+                            <div className='flex items-center justify-between'>
+                                <Button variant='link' onClick={fetchMorePage} loading={fetching} disabled={fetching}>
+                                    Load more
+                                </Button>
+                                <Button size='icon' className='animate-bounce' onClick={handleBackToTop}>
+                                    <ArrowUp className='h-5 w-5' />
+                                </Button>
+                            </div>
                         </TableCell>
                     </TableRow>
                 )}

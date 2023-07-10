@@ -64,6 +64,7 @@
     input {
         font-family: 'Lexend';
         font-weight: 300;
+        scroll-behavior: smooth;
     }
 
     a {
