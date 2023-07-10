@@ -5,9 +5,11 @@ function Home() {
     const { auth } = useAuth()
 
     return (
-        <Typography className='inline-flex items-center gap-x-1' variant='title' as='span'>
-            Welcome <Typography variant='mdTitle'>{auth.username},</Typography>
-        </Typography>
+        <div className='container px-3 pt-5'>
+            <Typography className='inline-flex items-center gap-x-1' variant='title' as='span'>
+                Welcome <Typography variant='mdTitle'>{auth.username},</Typography>
+            </Typography>
+        </div>
     )
 }
 

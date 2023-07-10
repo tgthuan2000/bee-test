@@ -1,11 +1,10 @@
-import { Fragment } from 'react'
 import Typography from '../../components/ui/typography'
 import DataList from './data-list'
 import SearchFilter from './search-filter'
 
 function TrendingMovie() {
     return (
-        <Fragment>
+        <div className='container px-3 pt-5'>
             <Typography variant='page'>Trending Movie</Typography>
             <div className='my-4 flex flex-col justify-between gap-4 sm:flex-row'>
                 <SearchFilter />
@@ -13,7 +12,7 @@ function TrendingMovie() {
             <div className='min-w-[350px] overflow-x-auto'>
                 <DataList />
             </div>
-        </Fragment>
+        </div>
     )
 }
 

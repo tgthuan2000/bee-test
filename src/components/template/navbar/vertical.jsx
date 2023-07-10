@@ -11,7 +11,7 @@ function VerticalNavbar({ children }) {
                     <NavLinkGroup />
                 </nav>
             )}
-            <div className='p-3 md:ml-72 md:p-5'>{children}</div>
+            <div className='md:ml-72'>{children}</div>
         </>
     )
 }

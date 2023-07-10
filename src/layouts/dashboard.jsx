@@ -19,7 +19,13 @@ function Dashboard() {
         <>
             <HorizontalNavbar>
                 <VerticalNavbar>
-                    <Suspense fallback={<Loader />}>
+                    <Suspense
+                        fallback={
+                            <div className='container px-3 pt-5'>
+                                <Loader />
+                            </div>
+                        }
+                    >
                         <Outlet />
                     </Suspense>
                 </VerticalNavbar>
