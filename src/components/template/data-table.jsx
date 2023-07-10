@@ -1,8 +1,10 @@
 import { isEmpty } from 'lodash'
+import { ArrowLeft, ArrowRight, Quote } from 'lucide-react'
+import numeral from 'numeral'
 import Button from '../ui/button'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
+import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '../ui/table'
 import Typography from '../ui/typography'
-import { Quote } from 'lucide-react'
+import Loader from '../ui/loader'
 
 export default function DataTable({
     columns,
@@ -13,7 +15,13 @@ export default function DataTable({
     fetchNextPage,
     fetchPrevPage,
     fetching,
+    page,
+    totalPages,
+    paginate = 'infinity',
 }) {
+    const isInfinity = paginate === 'infinity'
+    const isPage = paginate === 'page'
+
     return (
         <Table>
             <TableHeader>
@@ -44,7 +52,7 @@ export default function DataTable({
                         </TableRow>
                     ))
                 )}
-                {hasNextPage && (
+                {isInfinity && hasNextPage && (
                     <TableRow>
                         <TableCell colSpan={columns.length}>
                             <Button variant='link' onClick={fetchMorePage} loading={fetching} disabled={fetching}>
@@ -54,6 +62,47 @@ export default function DataTable({
                     </TableRow>
                 )}
             </TableBody>
+            {isPage && (
+                <TableFooter className='border-t'>
+                    <TableRow className='hover:bg-transparent'>
+                        <TableCell colSpan={columns.length}>
+                            <div className='flex items-center justify-between gap-3'>
+                                <Typography variant='text' as='span'>
+                                    Showing page{' '}
+                                    <Typography variant='title' as='span'>
+                                        {numeral(page).format()}
+                                    </Typography>{' '}
+                                    of{' '}
+                                    <Typography variant='title' as='span'>
+                                        {numeral(totalPages).format()}
+                                    </Typography>
+                                </Typography>
+                                <div className='inline-flex items-center space-x-2'>
+                                    {fetching && <Loader />}
+                                    <Button
+                                        type='button'
+                                        variant='ghost'
+                                        size='icon'
+                                        onClick={fetchPrevPage}
+                                        disabled={!hasPrevPage || fetching}
+                                    >
+                                        <ArrowLeft className='h-5 w-5' />
+                                    </Button>
+                                    <Button
+                                        type='button'
+                                        variant='ghost'
+                                        size='icon'
+                                        onClick={fetchNextPage}
+                                        disabled={!hasNextPage || fetching}
+                                    >
+                                        <ArrowRight className='h-5 w-5' />
+                                    </Button>
+                                </div>
+                            </div>
+                        </TableCell>
+                    </TableRow>
+                </TableFooter>
+            )}
         </Table>
     )
 }

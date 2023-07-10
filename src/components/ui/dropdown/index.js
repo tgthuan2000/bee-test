@@ -1,11 +1,11 @@
 import DropdownContent from './content'
 import DropdownProvider from './contexts/dropdown'
 import DropdownGroup from './group'
+import DropdownIcon from './icon'
 import DropdownItem from './item'
 import DropdownLabel from './label'
 import DropdownSeparator from './separator'
 import DropdownTrigger from './trigger'
-import DropdownIcon from './icon'
 
 /**
  * @example
@@ -33,9 +33,9 @@ export {
     Dropdown,
     DropdownContent,
     DropdownGroup,
+    DropdownIcon,
     DropdownItem,
     DropdownLabel,
     DropdownSeparator,
     DropdownTrigger,
-    DropdownIcon,
 }

@@ -24,6 +24,7 @@ function DataList() {
     const [loading, setLoading] = useState(true)
     const [searchParams] = useSearchParams()
     const searchQuery = searchParams.get('search')?.trim()
+    const paginate = searchParams.get('paginate')?.trim().toLowerCase()
 
     useEffect(() => {
         const timeout = setTimeout(async () => {
@@ -36,18 +37,10 @@ function DataList() {
         return () => {
             timeout && clearTimeout(timeout)
         }
-    }, [searchQuery, handleSearch, refetch, getData])
+    }, [searchQuery, paginate, handleSearch, refetch, getData])
 
-    const handleFetchMore = () => {
-        return fetchMorePage(!!searchQuery ? (newPage) => handleSearch({ page: newPage, query: searchQuery }) : getData)
-    }
-
-    const handleNextPage = () => {
-        return fetchNextPage(!!searchQuery ? (newPage) => handleSearch({ page: newPage }) : getData)
-    }
-
-    const handlePrevPage = () => {
-        return fetchPrevPage(!!searchQuery ? (newPage) => handleSearch({ page: newPage }) : getData)
+    const handleFetch = (callback) => {
+        return callback(!!searchQuery ? (newPage) => handleSearch({ page: newPage, query: searchQuery }) : getData)
     }
 
     if (loading) {
@@ -56,13 +49,16 @@ function DataList() {
 
     return (
         <DataTable
+            paginate={paginate}
             columns={columns}
             data={data.results}
+            page={data.page}
+            totalPages={data.totalPages}
             hasNextPage={hasNextPage}
             hasPrevPage={hasPrevPage}
-            fetchMorePage={handleFetchMore}
-            fetchNextPage={handleNextPage}
-            fetchPrevPage={handlePrevPage}
+            fetchMorePage={() => handleFetch(fetchMorePage)}
+            fetchNextPage={() => handleFetch(fetchNextPage)}
+            fetchPrevPage={() => handleFetch(fetchPrevPage)}
             fetching={fetching}
         />
     )
