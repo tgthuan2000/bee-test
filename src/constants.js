@@ -9,8 +9,8 @@ export const NAV_LINKS = [
         icon: Grid,
     },
     {
-        href: 'image',
-        label: 'Image',
+        href: 'feed',
+        label: 'Feed',
         icon: Image,
     },
 ]

@@ -14,7 +14,7 @@ const SignIn = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/sign-
 const Home = lazy(() => import('./features/home'))
 const TrendingMovie = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/trending-movie')))
 const Profile = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/profile')))
-const Image = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/image')))
+const Feed = lazy(() => wait(PAGE_LOAD_MS).then(() => import('./features/feed')))
 
 function App() {
     return (
@@ -25,7 +25,7 @@ function App() {
                         <Route index element={<Home />} />
                         <Route path='trending-movie' element={<TrendingMovie />} />
                         <Route path='profile' element={<Profile />} />
-                        <Route path='image' element={<Image />} />
+                        <Route path='feed' element={<Feed />} />
                     </Route>
                     <Route path='/auth' element={<Auth />}>
                         <Route index element={<SignIn />} />

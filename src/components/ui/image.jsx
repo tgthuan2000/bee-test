@@ -8,6 +8,7 @@ export const imageVars = cva('bg-accent', {
         variant: {
             profile: 'aspect-video w-full',
             table: 'h-14 w-14 rounded-lg object-cover shrink-0',
+            feed: 'min-w-[144px] snap-center rounded-lg bg-muted-foreground',
         },
     },
 })
@@ -23,7 +24,15 @@ function Image({ className, alt = '', variant, ...props }) {
         )
     }
 
-    return <img alt={alt} className={cn(imageVars({ variant }), className)} onError={() => setError(true)} {...props} />
+    return (
+        <img
+            alt={alt}
+            loading='lazy'
+            className={cn(imageVars({ variant }), className)}
+            onError={() => setError(true)}
+            {...props}
+        />
+    )
 }
 
 export default Image

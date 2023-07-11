@@ -75,4 +75,27 @@
     li {
         @apply list-none;
     }
+
+    .scroll-mask {
+        --mask-value: linear-gradient(
+            90deg,
+            hsla(0, 0%, 100%, 0),
+            hsla(0, 0%, 100%, 0.8) 5%,
+            #fff 25%,
+            #fff 75%,
+            hsla(0, 0%, 100%, 0.8) 95%,
+            hsla(0, 0%, 100%, 0)
+        );
+
+        mask-image: var(--mask-value);
+        -webkit-mask-image: var(--mask-value);
+    }
+
+    .hidden-scroll {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .hidden-scroll::-webkit-scrollbar {
+        display: none;
+    }
 }
