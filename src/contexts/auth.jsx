@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { createContext, useContext, useState } from 'react'
 import { LOCAL_STORAGE_BEE_PROFILE } from '../constants'
 import { wait } from '../lib/utils'
@@ -6,6 +7,7 @@ const defaultValue = {
     auth: {
         signed: false,
         username: undefined,
+        lastAccess: undefined,
     },
     loading: false,
     signIn: async () => {},
@@ -74,11 +76,27 @@ const AuthProvider = ({ children }) => {
         setLoading(false)
     }
 
+    const updateAccess = () => {
+        setAuth({
+            ...auth,
+            lastAccess: moment().unix(),
+        })
+
+        localStorage.setItem(
+            LOCAL_STORAGE_BEE_PROFILE,
+            JSON.stringify({
+                ...auth,
+                lastAccess: moment().unix(),
+            })
+        )
+    }
+
     const value = {
         auth,
         loading,
         signIn,
         signOut,
+        updateAccess,
     }
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
